@@ -1,0 +1,50 @@
+//textos
+h1, h2, h3 {
+    color: rgb(0,150,136);
+    font-family: 'Patua One', cursive;
+}
+
+
+//botones
+.btn, input, .jumbotron {
+    box-shadow: 3px 3px 3px 0px rgba(194, 192, 194, 0.5);
+}
+
+.btn-warning {
+    background-color: rgb(244,156,54);
+}
+
+.btn-secondary {
+    background-color: rgb(0,150,136);
+    &:hover {
+        background-color: rgb(4,200,188);
+    }
+}
+
+p, button, table {
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+        width: 100px;
+        height: auto;
+}
+
+@media (max-width: 800px) {
+    img {
+        width: 50px;
+        height: auto;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    td .btn {
+        display: block;
+        margin-left: auto;
+        margin-top: auto;
+    }
+
+
+}

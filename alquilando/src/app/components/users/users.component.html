@@ -13,11 +13,11 @@
         <form>
             <div class="form-group">
                 <label for="">Nombre:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.nombre" name="Nombre">
+                <input class="form-control" type="text" [(ngModel)]="usuario.first_name" name="Nombre">
             </div>
             <div class="form-group">
                 <label for="">Apellido:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.apellido" name="Apellido">
+                <input class="form-control" type="text" [(ngModel)]="usuario.last_name" name="Apellido">
             </div>
             <div class="form-group">
                 <label for="">Email:</label>
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label for="">Foto:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.foto" name="foto">
+                <input class="form-control" type="text" [(ngModel)]="usuario.avatar" name="foto">
             </div>
 
             <input class="btn btn-secondary my-3" type="button" (click)="agregar()" value="Agregar Usuarios">
@@ -37,13 +37,15 @@
             <div class="alert alert-danger m-3">
                 Completar todos los datos!</div>
         </div>
+        <br>
+        <br>
 
         <!-- tabla para mostrar usuarios y modificarlos -->
         <h3>Usuarios</h3>
+        <p>Para modificar usuarios, complete los campos superiores y clickee en el botón de modificar del usuario correspondiente. Ingrese la url de la fotografía que quiera utilizar.</p>
         <div *ngFor="let user of usuarios">
-
         </div>
-        <table class="table table-light table-hover my-5">
+        <table class="table table-responsive-md table-light table-hover my-5">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -70,5 +72,7 @@
                 </tr>
             </tbody>
         </table>
+
+
     </div>
 </div>

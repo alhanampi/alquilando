@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Usuario } from '../../usuario' //interface
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -8,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersComponent implements OnInit {
 
-  //objeto usuario
-  usuario = {
+  //objeto usuario, con interfaz aplicada
+  usuario: Usuario = {
     id: 4,
-    nombre: '',
-    apellido: '',
+    first_name: '',
+    last_name: '',
     email: '',
     foto: ''
   };
@@ -36,16 +38,16 @@ export class UsersComponent implements OnInit {
   agregar() {
     console.log(this.usuario)
     if ( //validar que no esté vacío
-      this.usuario.nombre != '' &&
-      this.usuario.apellido != '' &&
+      this.usuario.first_name != '' &&
+      this.usuario.last_name != '' &&
       this.usuario.email != ''
     ) {
       this.errorForm = false; 
       this.usuarios.push(this.usuario)
       this.usuario = {
         id: this.usuarios.length+1,
-        nombre: '',
-        apellido: '',
+        first_name: '',
+        last_name: '',
         foto: '',
         email: ''
       }
@@ -64,6 +66,7 @@ export class UsersComponent implements OnInit {
 
   //funcion modificar usuario:
   modificar (index) {
-    //this.usuarios
+    this.usuarios.splice(index, 1, this.usuario)
+    console.log(this.usuario)
   }
 }
