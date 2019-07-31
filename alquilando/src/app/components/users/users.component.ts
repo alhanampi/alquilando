@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -7,31 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  //interfaz del objeto usuario
+  //objeto usuario
   usuario = {
-    id: '',
+    id: 4,
     nombre: '',
     apellido: '',
-    email: ''
-
+    email: '',
+    foto: ''
   };
 
   //mostrar error si no se completan campos:
   errorForm: boolean = false;
 
-  //usuario de test (reemplazar por api)
-  usuarios: any[] = [
-    {
-      id: 1,
-      nombre: "Mark",
-      apellido: "Otto",
-      email: "@mdo"
-    }
-  ]
-
-  constructor() { }
-
+  usuarios: any;
+  
+  constructor(private http: HttpClient) { }
+  
   ngOnInit() {
+    this.usuarios = []
+    //traer usuarios de la api en el inicio:
+      this.http.get('https://reqres.in/api/users').subscribe(res => {
+        this.usuarios = res["data"];
+    })
   }
 
   //funcion usuarios nuevos
@@ -42,28 +40,30 @@ export class UsersComponent implements OnInit {
       this.usuario.apellido != '' &&
       this.usuario.email != ''
     ) {
-      this.errorForm = false;
+      this.errorForm = false; 
       this.usuarios.push(this.usuario)
       this.usuario = {
-        id: '',
+        id: this.usuarios.length+1,
         nombre: '',
         apellido: '',
+        foto: '',
         email: ''
       }
     } else {
-      this.errorForm = true;
+      this.errorForm = true; //si está vacío no valida y da un warning
       setTimeout(() => {
         this.errorForm = false;
       }, 1500)
     }
   }
 
-  //pasa el valor por index para eliminar usuario
+  //funcion borrar, pasa el valor por index para eliminar usuario
   borrar(index) {
     this.usuarios.splice(index, 1);
   }
 
+  //funcion modificar usuario:
   modificar (index) {
-    
+    //this.usuarios
   }
 }

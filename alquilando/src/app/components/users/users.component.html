@@ -9,7 +9,7 @@
 
         <h3>Ingresar nuevo</h3>
 
-<!-- form para generar usuarios nuevos -->
+        <!-- form para generar usuarios nuevos -->
         <form>
             <div class="form-group">
                 <label for="">Nombre:</label>
@@ -24,36 +24,48 @@
                 <input class="form-control" type="email" [(ngModel)]="usuario.email" name="Email">
             </div>
 
-            <input class="btn btn-secondary" type="button" (click)="agregar()" value="Agregar Usuarios">
+            <div class="form-group">
+                <label for="">Foto:</label>
+                <input class="form-control" type="text" [(ngModel)]="usuario.foto" name="foto">
+            </div>
+
+            <input class="btn btn-secondary my-3" type="button" (click)="agregar()" value="Agregar Usuarios">
         </form>
 
 
         <div *ngIf="errorForm">
-            <div class="alert alert-success m-3">
+            <div class="alert alert-danger m-3">
                 Completar todos los datos!</div>
         </div>
 
-<!-- tabla para mostrar usuarios y modificarlos -->
+        <!-- tabla para mostrar usuarios y modificarlos -->
         <h3>Usuarios</h3>
-        <table class="table table-light table-hover">
+        <div *ngFor="let user of usuarios">
+
+        </div>
+        <table class="table table-light table-hover my-5">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuario of usuarios">
+                <tr *ngFor="let usuario of usuarios; index as i">
                     <th scope="row">{{usuario.id}}</th>
-                    <td>{{usuario.nombre}}</td>
-                    <td>{{usuario.apellido}}</td>
-                    <td>@{{usuario.email}}</td>
+                    <td>{{usuario.first_name}}</td>
+                    <td>{{usuario.last_name}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td><img [src]="usuario.avatar" alt="falta foto" class="rounded-circle"></td>
                     <td>
-                        <input type="submit" class="btn btn-warning mx-3" value="Modificar" (click)="modificar(i)">
-                        <input type="submit" class="btn btn-danger" value="Eliminar" (click)="borrar(i)">
+                        <button type="submit" class="btn btn-warning mx-3" (click)="modificar(i)"> <i
+                                class="fa fa-pencil"></i></button>
+                        <button type="submit" class="btn btn-danger" value="Eliminar" (click)="borrar(i)"> <i
+                                class="fa fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
