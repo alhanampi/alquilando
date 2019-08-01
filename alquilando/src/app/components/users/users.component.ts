@@ -23,14 +23,14 @@ export class UsersComponent implements OnInit {
   errorForm: boolean = false;
 
   usuarios: any;
-  
+
   constructor(private http: HttpClient) { }
-  
+
   ngOnInit() {
     this.usuarios = []
     //traer usuarios de la api en el inicio:
-      this.http.get('https://reqres.in/api/users').subscribe(res => {
-        this.usuarios = res["data"];
+    this.http.get('https://reqres.in/api/users').subscribe(res => {
+      this.usuarios = res["data"];
     })
   }
 
@@ -42,10 +42,10 @@ export class UsersComponent implements OnInit {
       this.usuario.last_name != '' &&
       this.usuario.email != ''
     ) {
-      this.errorForm = false; 
+      this.errorForm = false;
       this.usuarios.push(this.usuario)
       this.usuario = {
-        id: this.usuarios.length+1,
+        id: this.usuarios.length + 1,
         first_name: '',
         last_name: '',
         foto: '',
@@ -65,8 +65,7 @@ export class UsersComponent implements OnInit {
   }
 
   //funcion modificar usuario:
-  modificar (index) {
+  modificar(index) {
     this.usuarios.splice(index, 1, this.usuario)
-    console.log(this.usuario)
   }
 }

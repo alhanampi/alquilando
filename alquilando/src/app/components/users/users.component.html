@@ -48,7 +48,6 @@
         <table class="table table-responsive-md table-light table-hover my-5">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Email</th>
@@ -58,7 +57,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let usuario of usuarios; index as i">
-                    <th scope="row">{{usuario.id}}</th>
+
                     <td>{{usuario.first_name}}</td>
                     <td>{{usuario.last_name}}</td>
                     <td>{{usuario.email}}</td>
