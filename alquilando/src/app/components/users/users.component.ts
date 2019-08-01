@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit {
     first_name: '',
     last_name: '',
     email: '',
-    foto: ''
+    avatar: ''
   };
 
   //mostrar error si no se completan campos:
@@ -36,7 +36,6 @@ export class UsersComponent implements OnInit {
 
   //funcion usuarios nuevos
   agregar() {
-    console.log(this.usuario)
     if ( //validar que no esté vacío
       this.usuario.first_name != '' &&
       this.usuario.last_name != '' &&
@@ -48,7 +47,7 @@ export class UsersComponent implements OnInit {
         id: this.usuarios.length + 1,
         first_name: '',
         last_name: '',
-        foto: '',
+        avatar: '',
         email: ''
       }
     } else {

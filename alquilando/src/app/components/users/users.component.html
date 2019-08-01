@@ -13,20 +13,20 @@
         <form>
             <div class="form-group">
                 <label for="">Nombre:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.first_name" name="Nombre">
+                <input class="form-control" type="text" [(ngModel)]="usuario.first_name" name="Nombre" placeholder="nombre*" required>
             </div>
             <div class="form-group">
                 <label for="">Apellido:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.last_name" name="Apellido">
+                <input class="form-control" type="text" [(ngModel)]="usuario.last_name" name="Apellido" placeholder="apellido*"required>
             </div>
             <div class="form-group">
                 <label for="">Email:</label>
-                <input class="form-control" type="email" [(ngModel)]="usuario.email" name="Email">
+                <input class="form-control" type="email" [(ngModel)]="usuario.email" name="Email" placeholder="email*"required>
             </div>
 
             <div class="form-group">
                 <label for="">Foto:</label>
-                <input class="form-control" type="text" [(ngModel)]="usuario.avatar" name="foto">
+                <input class="form-control" type="text" [(ngModel)]="usuario.avatar" name="foto" placeholder="Ingrese la url de la fotografía que quiera utilizar.">
             </div>
 
             <input class="btn btn-secondary my-3" type="button" (click)="agregar()" value="Agregar Usuarios">
@@ -42,7 +42,7 @@
 
         <!-- tabla para mostrar usuarios y modificarlos -->
         <h3>Usuarios</h3>
-        <p>Para modificar usuarios, complete los campos superiores y clickee en el botón de modificar del usuario correspondiente. Ingrese la url de la fotografía que quiera utilizar.</p>
+        <p>Para modificar usuarios, complete los campos superiores y clickee en el botón de modificar del usuario correspondiente. </p>
         <div *ngFor="let user of usuarios">
         </div>
         <table class="table table-responsive-md table-light table-hover my-5">

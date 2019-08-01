@@ -3,5 +3,5 @@ export class Usuario {
     first_name: string;
     last_name: string;
     email: string;
-    foto: string;
+    avatar: string;
 }
